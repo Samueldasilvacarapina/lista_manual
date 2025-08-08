@@ -29,7 +29,10 @@ def extrair_nomes(texto):
             continue
         if len(linha.split()) >= 2:
             nomes.append(linha)
-    return '\n\n'.join(nomes)
+
+    # Adiciona numeração
+    nomes_numerados = [f"{i+1} - {nome}" for i, nome in enumerate(nomes)]
+    return '\n'.join(nomes_numerados)
 
 st.title("Extrator de Nomes")
 
@@ -41,9 +44,3 @@ if st.button("Extrair Nomes"):
         st.text_area("Nomes extraídos:", resultado, height=400)
     else:
         st.warning("Por favor, cole o texto no campo acima.")
-
-
-
-#python -m streamlit run app.py
-
-#python -m streamlit run app.py
